@@ -96,5 +96,78 @@ namespace MediaTekDocuments.controller
         {
             return access.CreerExemplaire(exemplaire);
         }
+
+        /// <summary>
+        /// Crée un livre dans la BDD
+        /// </summary>
+        public bool CreerLivre(Livre livre)
+        {
+            return access.CreerLivre(livre);
+        }
+
+        /// <summary>
+        /// Modifie un livre dans la BDD
+        /// </summary>
+        public bool ModifierLivre(Livre livre)
+        {
+            return access.ModifierLivre(livre);
+        }
+
+        /// <summary>
+        /// Supprime un livre dans la BDD
+        /// </summary>
+        public bool SupprimerLivre(Livre livre)
+        {
+            return access.SupprimerLivre(livre);
+        }
+
+        /// <summary>
+        /// Crée un dvd dans la BDD
+        /// </summary>
+        public bool CreerDvd(Dvd dvd)
+        {
+            return access.CreerDvd(dvd);
+        }
+
+        /// <summary>
+        /// Modifie un dvd dans la BDD
+        /// </summary>
+        public bool ModifierDvd(Dvd dvd)
+        {
+            return access.ModifierDvd(dvd);
+        }
+
+
+        /// <summary>
+        /// Supprime un dvd dans la BDD
+        /// </summary>
+        public bool SupprimerDvd(Dvd dvd)
+        {
+            return access.SupprimerDvd(dvd);
+        }
+
+        /// <summary>
+        /// Crée une revue dans la BDD
+        /// </summary>
+        public bool CreerRevue(Revue revue)
+        {
+            return access.CreerRevue(revue);
+        }
+
+        /// <summary>
+        /// Modifie une revue dans la BDD
+        /// </summary>
+        public bool ModifierRevue(Revue revue)
+        {
+            return access.ModifierRevue(revue);
+        }
+
+        /// <summary>
+        /// Supprime une revue dans la BDD
+        /// </summary>
+        public bool SupprimerRevue(Revue revue)
+        {
+            return access.SupprimerRevue(revue);
+        }
     }
 }
