@@ -5,7 +5,7 @@ namespace MediaTekDocuments.model
     /// <summary>
     /// Classe utilitaire pour les calculs de dates
     /// </summary>
-    public class GestionAbonnement
+    public static class GestionAbonnement
     {
         /// <summary>
         /// Vérifie si une date de parution est comprise entre deux dates

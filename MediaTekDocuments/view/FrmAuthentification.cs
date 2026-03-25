@@ -11,7 +11,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Utilisateur connecté, accessible depuis l'extérieur
         /// </summary>
-        public Utilisateur utilisateurConnecte = null;
+        public Utilisateur UtilisateurConnecte { get; private set; } = null;
 
         public FrmAuthentification()
         {
@@ -34,7 +34,7 @@ namespace MediaTekDocuments.view
 
             if (utilisateur != null)
             {
-                utilisateurConnecte = utilisateur;
+                UtilisateurConnecte = utilisateur;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

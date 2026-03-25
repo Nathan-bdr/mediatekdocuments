@@ -20,7 +20,7 @@ namespace MediaTekDocuments
             FrmAuthentification frmAuthentification = new FrmAuthentification();
             if (frmAuthentification.ShowDialog() == DialogResult.OK)
             {
-                Utilisateur utilisateur = frmAuthentification.utilisateurConnecte;
+                Utilisateur utilisateur = frmAuthentification.UtilisateurConnecte;
 
                 // service Culture : pas d'accès
                 if (utilisateur.IdService == "00003")
