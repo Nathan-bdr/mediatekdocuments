@@ -400,6 +400,61 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+        /// <summary>
+        /// Retourne les abonnements d'une revue
+        /// </summary>
+        public List<Abonnement> GetAbonnementsRevue(string idRevue)
+        {
+            String jsonId = convertToJson("id", idRevue);
+            List<Abonnement> lesAbonnements = TraitementRecup<Abonnement>(GET, "abonnement/" + jsonId, null);
+            return lesAbonnements;
+        }
+
+        /// <summary>
+        /// Crée un abonnement dans la BDD
+        /// </summary>
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            String jsonAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
+            try
+            {
+                List<Abonnement> liste = TraitementRecup<Abonnement>(POST, "abonnement", "champs=" + jsonAbonnement);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Supprime un abonnement dans la BDD
+        /// </summary>
+        public bool SupprimerAbonnement(Abonnement abonnement)
+        {
+            String jsonAbonnement = convertToJson("id", abonnement.Id);
+            try
+            {
+                List<Abonnement> liste = TraitementRecup<Abonnement>(DELETE, "abonnement/" + jsonAbonnement, null);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Retourne les abonnements qui expirent dans moins de 30 jours
+        /// </summary>
+        public List<Abonnement> GetAbonnementsExpirantBientot()
+        {
+            List<Abonnement> lesAbonnements = TraitementRecup<Abonnement>(GET, "abonnementexpire", null);
+            return lesAbonnements;
+        }
+
 
         /// <summary>
         /// Traitement de la récupération du retour de l'api, avec conversion du json en liste pour les select (GET)

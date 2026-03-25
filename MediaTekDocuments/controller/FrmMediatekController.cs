@@ -209,5 +209,37 @@ namespace MediaTekDocuments.controller
         {
             return access.SupprimerCommandeDocument(commande);
         }
+
+        /// <summary>
+        /// Retourne les abonnements d'une revue
+        /// </summary>
+        public List<Abonnement> GetAbonnementsRevue(string idRevue)
+        {
+            return access.GetAbonnementsRevue(idRevue);
+        }
+
+        /// <summary>
+        /// Crée un abonnement
+        /// </summary>
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            return access.CreerAbonnement(abonnement);
+        }
+
+        /// <summary>
+        /// Supprime un abonnement
+        /// </summary>
+        public bool SupprimerAbonnement(Abonnement abonnement)
+        {
+            return access.SupprimerAbonnement(abonnement);
+        }
+
+        /// <summary>
+        /// Retourne les abonnements qui expirent dans moins de 30 jours
+        /// </summary>
+        public List<Abonnement> GetAbonnementsExpirantBientot()
+        {
+            return access.GetAbonnementsExpirantBientot();
+        }
     }
 }
