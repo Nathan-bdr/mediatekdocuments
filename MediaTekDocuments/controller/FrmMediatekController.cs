@@ -241,5 +241,29 @@ namespace MediaTekDocuments.controller
         {
             return access.GetAbonnementsExpirantBientot();
         }
+
+        /// <summary>
+        /// Retourne tous les états
+        /// </summary>
+        public List<Etat> GetAllEtats()
+        {
+            return access.GetAllEtats();
+        }
+
+        /// <summary>
+        /// Modifie l'état d'un exemplaire
+        /// </summary>
+        public bool ModifierEtatExemplaire(Exemplaire exemplaire)
+        {
+            return access.ModifierEtatExemplaire(exemplaire);
+        }
+
+        /// <summary>
+        /// Supprime un exemplaire
+        /// </summary>
+        public bool SupprimerExemplaire(Exemplaire exemplaire)
+        {
+            return access.SupprimerExemplaire(exemplaire);
+        }
     }
 }

@@ -35,10 +35,15 @@ namespace MediaTekDocuments.dal
         /// méthode HTTP pour insert
         /// </summary>
         private const string POST = "POST";
-        private const string PUT = "PUT";
-        private const string DELETE = "DELETE";
         /// <summary>
         /// méthode HTTP pour update
+        /// </summary>
+        private const string PUT = "PUT";
+        /// <summary>
+        /// méthode HTTP pour delete
+        /// </summary>
+        private const string DELETE = "DELETE";
+        
 
         /// <summary>
         /// Méthode privée pour créer un singleton
@@ -532,6 +537,54 @@ namespace MediaTekDocuments.dal
             {
                 serializer.Serialize(writer, value);
             }
+        }
+
+        /// <summary>
+        /// Retourne tous les états à partir de la BDD
+        /// </summary>
+        public List<Etat> GetAllEtats()
+        {
+            List<Etat> lesEtats = TraitementRecup<Etat>(GET, "etat", null);
+            return lesEtats;
+        }
+
+        /// <summary>
+        /// Modifie l'état d'un exemplaire
+        /// </summary>
+        public bool ModifierEtatExemplaire(Exemplaire exemplaire)
+        {
+            String jsonExemplaire = JsonConvert.SerializeObject(exemplaire);
+            try
+            {
+                List<Exemplaire> liste = TraitementRecup<Exemplaire>(PUT, "exemplaire/" + exemplaire.Id, "champs=" + jsonExemplaire);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Supprime un exemplaire
+        /// </summary>
+        public bool SupprimerExemplaire(Exemplaire exemplaire)
+        {
+            Dictionary<Object, Object> dictionary = new Dictionary<Object, Object>();
+            dictionary.Add("id", exemplaire.Id);
+            dictionary.Add("Numero", exemplaire.Numero);
+            String jsonExemplaire = JsonConvert.SerializeObject(dictionary);
+            try
+            {
+                List<Exemplaire> liste = TraitementRecup<Exemplaire>(DELETE, "exemplaire/" + jsonExemplaire, null);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
         }
 
     }
