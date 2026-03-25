@@ -43,7 +43,11 @@ namespace MediaTekDocuments.dal
         /// méthode HTTP pour delete
         /// </summary>
         private const string DELETE = "DELETE";
-        
+        /// <summary>
+        /// nom de connexion à la bdd
+        /// </summary>
+        private static readonly string connectionName = "MediaTekDocuments.Properties.Settings.apiAuthentification";
+
 
         /// <summary>
         /// Méthode privée pour créer un singleton
@@ -54,7 +58,7 @@ namespace MediaTekDocuments.dal
             String authenticationString;
             try
             {
-                authenticationString = "admin:adminpwd";
+                authenticationString = GetAuthenticationString(connectionName);
                 api = ApiRest.GetInstance(uriApi, authenticationString);
             }
             catch (Exception e)
@@ -62,6 +66,19 @@ namespace MediaTekDocuments.dal
                 Console.WriteLine(e.Message);
                 Environment.Exit(0);
             }
+        }
+
+
+        /// <summary>
+        /// Récupère la chaîne d'authentification depuis App.config
+        /// </summary>
+        private static string GetAuthenticationString(string name)
+        {
+            string returnValue = null;
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];
+            if (settings != null)
+                returnValue = settings.ConnectionString;
+            return returnValue;
         }
 
         /// <summary>
