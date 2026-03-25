@@ -327,6 +327,79 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+        /// <summary>
+        /// Retourne les commandes d'un document (livre ou dvd)
+        /// </summary>
+        public List<CommandeDocument> GetCommandesDocument(string idLivreDvd)
+        {
+            String jsonId = convertToJson("id", idLivreDvd);
+            List<CommandeDocument> lesCommandes = TraitementRecup<CommandeDocument>(GET, "commandedocument/" + jsonId, null);
+            return lesCommandes;
+        }
+
+        /// <summary>
+        /// Retourne tous les suivis à partir de la BDD
+        /// </summary>
+        public List<Categorie> GetAllSuivis()
+        {
+            IEnumerable<Suivi> lesSuivis = TraitementRecup<Suivi>(GET, "suivi", null);
+            return new List<Categorie>(lesSuivis);
+        }
+
+        /// <summary>
+        /// Crée une commande de document dans la BDD
+        /// </summary>
+        public bool CreerCommandeDocument(CommandeDocument commande)
+        {
+            String jsonCommande = JsonConvert.SerializeObject(commande, new CustomDateTimeConverter());
+            try
+            {
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(POST, "commandedocument", "champs=" + jsonCommande);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Modifie le suivi d'une commande dans la BDD
+        /// </summary>
+        public bool ModifierSuiviCommande(CommandeDocument commande)
+        {
+            String jsonCommande = JsonConvert.SerializeObject(commande);
+            try
+            {
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(PUT, "commandedocument/" + commande.Id, "champs=" + jsonCommande);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Supprime une commande de document dans la BDD
+        /// </summary>
+        public bool SupprimerCommandeDocument(CommandeDocument commande)
+        {
+            String jsonCommande = convertToJson("id", commande.Id);
+            try
+            {
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(DELETE, "commandedocument/" + jsonCommande, null);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// Traitement de la récupération du retour de l'api, avec conversion du json en liste pour les select (GET)

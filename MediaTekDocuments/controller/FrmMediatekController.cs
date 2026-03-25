@@ -169,5 +169,45 @@ namespace MediaTekDocuments.controller
         {
             return access.SupprimerRevue(revue);
         }
+
+        /// <summary>
+        /// Retourne les commandes d'un document
+        /// </summary>
+        public List<CommandeDocument> GetCommandesDocument(string idLivreDvd)
+        {
+            return access.GetCommandesDocument(idLivreDvd);
+        }
+
+        /// <summary>
+        /// Retourne tous les suivis
+        /// </summary>
+        public List<Categorie> GetAllSuivis()
+        {
+            return access.GetAllSuivis();
+        }
+
+        /// <summary>
+        /// Crée une commande de document
+        /// </summary>
+        public bool CreerCommandeDocument(CommandeDocument commande)
+        {
+            return access.CreerCommandeDocument(commande);
+        }
+
+        /// <summary>
+        /// Modifie le suivi d'une commande
+        /// </summary>
+        public bool ModifierSuiviCommande(CommandeDocument commande)
+        {
+            return access.ModifierSuiviCommande(commande);
+        }
+
+        /// <summary>
+        /// Supprime une commande de document
+        /// </summary>
+        public bool SupprimerCommandeDocument(CommandeDocument commande)
+        {
+            return access.SupprimerCommandeDocument(commande);
+        }
     }
 }
