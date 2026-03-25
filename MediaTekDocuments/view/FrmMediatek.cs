@@ -39,13 +39,17 @@ namespace MediaTekDocuments.view
 
         private readonly BindingSource bdgReceptionEtats = new BindingSource();
 
+        private readonly Utilisateur utilisateur;
+
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
         /// </summary>
-        internal FrmMediatek()
+        internal FrmMediatek(Utilisateur utilisateur)
         {
             InitializeComponent();
             this.controller = new FrmMediatekController();
+            this.utilisateur = utilisateur;
+            GererAcces();
             // ouverture de la fenêtre d'alerte au démarrage
             AfficheAlerteAbonnements();
         }
@@ -71,11 +75,51 @@ namespace MediaTekDocuments.view
         /// </summary>
         private void AfficheAlerteAbonnements()
         {
-            List<Abonnement> lesAbonnements = controller.GetAbonnementsExpirantBientot();
-            if (lesAbonnements.Count > 0)
+            if (utilisateur.IdService == "00001")
             {
-                FrmAlerte frmAlerte = new FrmAlerte(lesAbonnements);
-                frmAlerte.ShowDialog();
+                List<Abonnement> lesAbonnements = controller.GetAbonnementsExpirantBientot();
+                if (lesAbonnements.Count > 0)
+                {
+                    FrmAlerte frmAlerte = new FrmAlerte(lesAbonnements);
+                    frmAlerte.ShowDialog();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gère les accès selon le service de l'utilisateur connecté
+        /// </summary>
+        private void GererAcces()
+        {
+            // service Prêts : accès en consultation seulement
+            if (utilisateur.IdService == "00002")
+            {
+                // onglets commandes invisibles
+                tabOngletsApplication.TabPages.Remove(tabCommandesLivres);
+                tabOngletsApplication.TabPages.Remove(tabCommandesDvd);
+                tabOngletsApplication.TabPages.Remove(tabCommandesRevues);
+                // boutons ajout/modif/suppression invisibles dans livres
+                btnLivresAjouter.Visible = false;
+                btnLivresModifier.Visible = false;
+                btnLivresSupprimer.Visible = false;
+                btnLivresEnregistrer.Visible = false;
+                btnLivresAnnuler.Visible = false;
+                // boutons ajout/modif/suppression invisibles dans dvd
+                btnDvdAjouter.Visible = false;
+                btnDvdModifier.Visible = false;
+                btnDvdSupprimer.Visible = false;
+                btnDvdEnregistrer.Visible = false;
+                btnDvdAnnuler.Visible = false;
+                // boutons ajout/modif/suppression invisibles dans revues
+                btnRevuesAjouter.Visible = false;
+                btnRevuesModifier.Visible = false;
+                btnRevuesSupprimer.Visible = false;
+                btnRevuesEnregistrer.Visible = false;
+                btnRevuesAnnuler.Visible = false;
+                // groupbox exemplaires invisibles
+                grbLivresEtatExemplaire.Visible = false;
+                grbDvdEtat.Visible = false;
+                grbParutionsEtat.Visible = false;
             }
         }
         #endregion

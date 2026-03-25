@@ -265,5 +265,13 @@ namespace MediaTekDocuments.controller
         {
             return access.SupprimerExemplaire(exemplaire);
         }
+
+        /// <summary>
+        /// Vérifie les identifiants et retourne l'utilisateur si trouvé
+        /// </summary>
+        public Utilisateur GetUtilisateur(string login, string pwd)
+        {
+            return access.GetUtilisateur(login, pwd);
+        }
     }
 }

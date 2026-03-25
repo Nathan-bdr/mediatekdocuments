@@ -587,5 +587,19 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+        /// <summary>
+        /// Vérifie les identifiants et retourne l'utilisateur si trouvé
+        /// </summary>
+        public Utilisateur GetUtilisateur(string login, string pwd)
+        {
+            String jsonChamps = JsonConvert.SerializeObject(new { login = login, pwd = pwd });
+            List<Utilisateur> listeUtilisateurs = TraitementRecup<Utilisateur>(GET, "utilisateur/" + jsonChamps, null);
+            if (listeUtilisateurs.Count > 0)
+            {
+                return listeUtilisateurs[0];
+            }
+            return null;
+        }
+
     }
 }
