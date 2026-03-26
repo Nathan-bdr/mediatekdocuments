@@ -2,16 +2,9 @@
 using System.Windows.Forms;
 using MediaTekDocuments.model;
 using MediaTekDocuments.controller;
-using System.ComponentModel;
 
 namespace MediaTekDocuments.view
 {
-    /// <summary>
-    /// Classe utilisée pour la documentation du namespace
-    /// </summary>
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    internal class NamespaceDoc { }
-
     /// <summary>
     /// Classe d'affichage du formulaire d'authentification
     /// </summary>

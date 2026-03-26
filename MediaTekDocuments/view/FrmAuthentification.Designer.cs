@@ -68,6 +68,7 @@
             this.txbPwd.Name = "txbPwd";
             this.txbPwd.Size = new System.Drawing.Size(190, 20);
             this.txbPwd.TabIndex = 19;
+            this.txbPwd.UseSystemPasswordChar = true;
             // 
             // btnAuthentification
             // 
