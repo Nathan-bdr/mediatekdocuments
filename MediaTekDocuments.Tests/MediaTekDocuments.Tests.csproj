@@ -49,6 +49,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AbonnementTests.cs" />
+    <Compile Include="Model\CommandeDocumentTests.cs" />
+    <Compile Include="Model\CommandeTests.cs" />
+    <Compile Include="Model\DvdTests.cs" />
+    <Compile Include="Model\ExemplaireTests.cs" />
+    <Compile Include="Model\LivreTests.cs" />
+    <Compile Include="Model\RevueTests.cs" />
+    <Compile Include="Model\ServiceTests.cs" />
+    <Compile Include="Model\SuiviTests.cs" />
+    <Compile Include="Model\UtilisateurTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
