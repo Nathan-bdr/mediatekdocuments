@@ -2,9 +2,19 @@
 using System.Windows.Forms;
 using MediaTekDocuments.model;
 using MediaTekDocuments.controller;
+using System.ComponentModel;
 
 namespace MediaTekDocuments.view
 {
+    /// <summary>
+    /// Classe utilisée pour la documentation du namespace
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    internal class NamespaceDoc { }
+
+    /// <summary>
+    /// Classe d'affichage du formulaire d'authentification
+    /// </summary>
     public partial class FrmAuthentification : Form
     {
         private readonly FrmMediatekController controller;
@@ -22,6 +32,8 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Clic sur Se connecter : vérifie les identifiants
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAuthentification_Click(object sender, EventArgs e)
         {
             if (txbLogin.Text.Equals("") || txbPwd.Text.Equals(""))

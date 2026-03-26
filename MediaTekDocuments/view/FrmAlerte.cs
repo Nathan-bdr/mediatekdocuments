@@ -5,6 +5,9 @@ using MediaTekDocuments.model;
 
 namespace MediaTekDocuments.view
 {
+    /// <summary>
+    /// Classe d'affichage du formulaire d'alerte pour les abonnements expirant bientôt
+    /// </summary>
     public partial class FrmAlerte : Form
     {
         private readonly BindingSource bdgAlerte = new BindingSource();
@@ -12,6 +15,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Constructeur : reçoit la liste des abonnements expirant bientôt
         /// </summary>
+        /// <param name="lesAbonnements">Liste des abonnements expirant bientôt</param>
         public FrmAlerte(List<Abonnement> lesAbonnements)
         {
             InitializeComponent();
@@ -21,6 +25,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Remplit le datagrid avec la liste des abonnements
         /// </summary>
+        /// <param name="lesAbonnements">Liste des abonnements expirant bientôt</param>
         private void RemplirListe(List<Abonnement> lesAbonnements)
         {
             bdgAlerte.DataSource = lesAbonnements;
@@ -35,6 +40,8 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Ferme la fenêtre
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAlerteOK_Click(object sender, EventArgs e)
         {
             this.Close();

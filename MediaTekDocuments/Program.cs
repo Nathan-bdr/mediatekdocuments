@@ -2,9 +2,25 @@
 using MediaTekDocuments.model;
 using System;
 using System.Windows.Forms;
+using System.ComponentModel;
 
+/// <summary>
+/// Application de gestion des documents des médiateques du réseau MediaTek86
+///</summary>
 namespace MediaTekDocuments
 {
+    /// <summary>
+    /// Application de gestion des documents des médiateques du réseau MediaTek86
+    ///</summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
+    /// Classe principale de l'application, point d'entrée
+    /// </summary>
     static class Program
     {
         /// <summary>

@@ -8,9 +8,16 @@ using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Linq;
 using Serilog;
+using System.ComponentModel;
 
 namespace MediaTekDocuments.dal
 {
+    /// <summary>
+    /// Namespace contenant la couche d'accès aux données
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    internal class NamespaceDoc { }
+
     /// <summary>
     /// Classe d'accès aux données
     /// </summary>
@@ -83,6 +90,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Récupère la chaîne d'authentification depuis App.config
         /// </summary>
+        /// <param name="name">nom de la chaîne de connexion</param>
         private static string GetAuthenticationString(string name)
         {
             string returnValue = null;
@@ -201,6 +209,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Ajoute un livre dans la BDD via l'API
         /// </summary>
+        /// <param name="livre">livre à ajouter</param>
         public bool CreerLivre(Livre livre)
         {
             String jsonLivre = JsonConvert.SerializeObject(livre);
@@ -219,6 +228,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Modifie un livre dans la BDD via l'API
         /// </summary>
+        /// <param name="livre">livre à modifier</param>
         public bool ModifierLivre(Livre livre)
         {
             String jsonLivre = JsonConvert.SerializeObject(livre);
@@ -237,6 +247,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Supprime un livre dans la BDD via l'API
         /// </summary>
+        /// <param name="livre">livre à supprimer</param>
         public bool SupprimerLivre(Livre livre)
         {
             String jsonLivre = convertToJson("id", livre.Id);
@@ -255,6 +266,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Ajoute un dvd dans la BDD via l'API
         /// </summary>
+        /// <param name="dvd">dvd à ajouter</param>
         public bool CreerDvd(Dvd dvd)
         {
             String jsonDvd = JsonConvert.SerializeObject(dvd);
@@ -273,6 +285,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Modifie un dvd dans la BDD via l'API
         /// </summary>
+        /// <param name="dvd">dvd à modifier</param>
         public bool ModifierDvd(Dvd dvd)
         {
             String jsonDvd = JsonConvert.SerializeObject(dvd);
@@ -291,6 +304,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Supprime un dvd dans la BDD via l'API
         /// </summary>
+        /// <param name="dvd">dvd à supprimer</param>
         public bool SupprimerDvd(Dvd dvd)
         {
             String jsonDvd = convertToJson("id", dvd.Id);
@@ -309,6 +323,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Ajoute une revue dans la BDD via l'API
         /// </summary>
+        /// <param name="revue">revue à ajouter</param>
         public bool CreerRevue(Revue revue)
         {
             String jsonRevue = JsonConvert.SerializeObject(revue);
@@ -327,6 +342,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Modifie une revue dans la BDD via l'API
         /// </summary>
+        /// <param name="revue">revue à modifier</param>
         public bool ModifierRevue(Revue revue)
         {
             String jsonRevue = JsonConvert.SerializeObject(revue);
@@ -345,6 +361,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Supprime une revue dans la BDD via l'API
         /// </summary>
+        /// <param name="revue">revue à supprimer</param>
         public bool SupprimerRevue(Revue revue)
         {
             String jsonRevue = convertToJson("id", revue.Id);
@@ -363,6 +380,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Retourne les commandes d'un document (livre ou dvd)
         /// </summary>
+        /// <param name="idLivreDvd">id du livre ou dvd concerné</param>
         public List<CommandeDocument> GetCommandesDocument(string idLivreDvd)
         {
             String jsonId = convertToJson("id", idLivreDvd);
@@ -382,6 +400,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Crée une commande de document dans la BDD
         /// </summary>
+        /// <param name="commande">commande à créer</param>
         public bool CreerCommandeDocument(CommandeDocument commande)
         {
             String jsonCommande = JsonConvert.SerializeObject(commande, new CustomDateTimeConverter());
@@ -400,6 +419,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Modifie le suivi d'une commande dans la BDD
         /// </summary>
+        /// <param name="commande">commande à modifier</param>
         public bool ModifierSuiviCommande(CommandeDocument commande)
         {
             String jsonCommande = JsonConvert.SerializeObject(commande);
@@ -418,6 +438,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Supprime une commande de document dans la BDD
         /// </summary>
+        /// <param name="commande">commande à supprimer</param>
         public bool SupprimerCommandeDocument(CommandeDocument commande)
         {
             String jsonCommande = convertToJson("id", commande.Id);
@@ -436,6 +457,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Retourne les abonnements d'une revue
         /// </summary>
+        /// <param name="idRevue">id de la revue concernée</param>
         public List<Abonnement> GetAbonnementsRevue(string idRevue)
         {
             String jsonId = convertToJson("id", idRevue);
@@ -446,6 +468,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Crée un abonnement dans la BDD
         /// </summary>
+        /// <param name="abonnement">abonnement à créer</param>
         public bool CreerAbonnement(Abonnement abonnement)
         {
             String jsonAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
@@ -464,6 +487,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Supprime un abonnement dans la BDD
         /// </summary>
+        /// <param name="abonnement">abonnement à supprimer</param>
         public bool SupprimerAbonnement(Abonnement abonnement)
         {
             String jsonAbonnement = convertToJson("id", abonnement.Id);
@@ -581,6 +605,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Modifie l'état d'un exemplaire
         /// </summary>
+        /// <param name="exemplaire">exemplaire à modifier</param>
         public bool ModifierEtatExemplaire(Exemplaire exemplaire)
         {
             String jsonExemplaire = JsonConvert.SerializeObject(exemplaire);
@@ -599,6 +624,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Supprime un exemplaire
         /// </summary>
+        /// <param name="exemplaire">exemplaire à supprimer</param>
         public bool SupprimerExemplaire(Exemplaire exemplaire)
         {
             Dictionary<Object, Object> dictionary = new Dictionary<Object, Object>();
@@ -620,6 +646,8 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Vérifie les identifiants et retourne l'utilisateur si trouvé
         /// </summary>
+        /// <param name="login">login de l'utilisateur</param>
+        /// <param name="pwd">mot de passe de l'utilisateur</param>
         public Utilisateur GetUtilisateur(string login, string pwd)
         {
             String jsonChamps = JsonConvert.SerializeObject(new { login = login, pwd = pwd });

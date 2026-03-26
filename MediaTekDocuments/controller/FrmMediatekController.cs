@@ -1,9 +1,16 @@
 ﻿using System.Collections.Generic;
 using MediaTekDocuments.model;
 using MediaTekDocuments.dal;
+using System.ComponentModel;
 
 namespace MediaTekDocuments.controller
 {
+    /// <summary>
+    /// Namespace contenant le contrôleur de l'application
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    internal class NamespaceDoc { }
+
     /// <summary>
     /// Contrôleur lié à FrmMediatek
     /// </summary>
@@ -100,6 +107,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Crée un livre dans la BDD
         /// </summary>
+        /// <param name="livre">L'objet Livre concerné</param>
         public bool CreerLivre(Livre livre)
         {
             return access.CreerLivre(livre);
@@ -108,6 +116,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Modifie un livre dans la BDD
         /// </summary>
+        /// <param name="livre">L'objet Livre concerné</param>
         public bool ModifierLivre(Livre livre)
         {
             return access.ModifierLivre(livre);
@@ -116,6 +125,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Supprime un livre dans la BDD
         /// </summary>
+        /// <param name="livre">L'objet Livre concerné</param>
         public bool SupprimerLivre(Livre livre)
         {
             return access.SupprimerLivre(livre);
@@ -124,6 +134,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Crée un dvd dans la BDD
         /// </summary>
+        /// <param name="dvd">L'objet Dvd concerné</param>
         public bool CreerDvd(Dvd dvd)
         {
             return access.CreerDvd(dvd);
@@ -132,6 +143,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Modifie un dvd dans la BDD
         /// </summary>
+        /// <param name="dvd">L'objet Dvd concerné</param>
         public bool ModifierDvd(Dvd dvd)
         {
             return access.ModifierDvd(dvd);
@@ -141,6 +153,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Supprime un dvd dans la BDD
         /// </summary>
+        /// <param name="dvd">L'objet Dvd concerné</param>
         public bool SupprimerDvd(Dvd dvd)
         {
             return access.SupprimerDvd(dvd);
@@ -149,6 +162,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Crée une revue dans la BDD
         /// </summary>
+        /// <param name="revue">L'objet Revue concerné</param>
         public bool CreerRevue(Revue revue)
         {
             return access.CreerRevue(revue);
@@ -157,6 +171,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Modifie une revue dans la BDD
         /// </summary>
+        /// <param name="revue">L'objet Revue concerné</param>
         public bool ModifierRevue(Revue revue)
         {
             return access.ModifierRevue(revue);
@@ -165,6 +180,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Supprime une revue dans la BDD
         /// </summary>
+        /// <param name="revue">L'objet Revue concerné</param>
         public bool SupprimerRevue(Revue revue)
         {
             return access.SupprimerRevue(revue);
@@ -173,6 +189,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Retourne les commandes d'un document
         /// </summary>
+        /// <param name="idLivreDvd">id du livre ou du dvd concerné</param>
         public List<CommandeDocument> GetCommandesDocument(string idLivreDvd)
         {
             return access.GetCommandesDocument(idLivreDvd);
@@ -189,6 +206,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Crée une commande de document
         /// </summary>
+        /// <param name="commande">L'objet CommandeDocument concerné</param>
         public bool CreerCommandeDocument(CommandeDocument commande)
         {
             return access.CreerCommandeDocument(commande);
@@ -197,6 +215,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Modifie le suivi d'une commande
         /// </summary>
+        /// <param name="commande">L'objet CommandeDocument concerné</param>
         public bool ModifierSuiviCommande(CommandeDocument commande)
         {
             return access.ModifierSuiviCommande(commande);
@@ -205,6 +224,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Supprime une commande de document
         /// </summary>
+        /// <param name="commande">L'objet CommandeDocument concerné</param>
         public bool SupprimerCommandeDocument(CommandeDocument commande)
         {
             return access.SupprimerCommandeDocument(commande);
@@ -213,6 +233,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Retourne les abonnements d'une revue
         /// </summary>
+        /// <param name="idRevue">id de la revue concernée</param>
         public List<Abonnement> GetAbonnementsRevue(string idRevue)
         {
             return access.GetAbonnementsRevue(idRevue);
@@ -221,6 +242,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Crée un abonnement
         /// </summary>
+        /// <param name="abonnement">L'objet Abonnement concerné</param>
         public bool CreerAbonnement(Abonnement abonnement)
         {
             return access.CreerAbonnement(abonnement);
@@ -229,6 +251,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Supprime un abonnement
         /// </summary>
+        /// <param name="abonnement">L'objet Abonnement concerné</param>
         public bool SupprimerAbonnement(Abonnement abonnement)
         {
             return access.SupprimerAbonnement(abonnement);
@@ -253,6 +276,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Modifie l'état d'un exemplaire
         /// </summary>
+        /// <param name="exemplaire">L'objet Exemplaire concerné</param>
         public bool ModifierEtatExemplaire(Exemplaire exemplaire)
         {
             return access.ModifierEtatExemplaire(exemplaire);
@@ -261,6 +285,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Supprime un exemplaire
         /// </summary>
+        /// <param name="exemplaire">L'objet Exemplaire concerné</param>
         public bool SupprimerExemplaire(Exemplaire exemplaire)
         {
             return access.SupprimerExemplaire(exemplaire);
@@ -269,6 +294,8 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Vérifie les identifiants et retourne l'utilisateur si trouvé
         /// </summary>
+        /// <param name="login">Login de l'utilisateur</param>
+        /// <param name="pwd">Password de l'utilisateur</param>
         public Utilisateur GetUtilisateur(string login, string pwd)
         {
             return access.GetUtilisateur(login, pwd);

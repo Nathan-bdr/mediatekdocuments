@@ -1,6 +1,13 @@
-﻿
+﻿using System.ComponentModel;
+
 namespace MediaTekDocuments.model
 {
+    /// <summary>
+    /// Namespace contenant les classes métier de l'application
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    internal class NamespaceDoc { }
+
     /// <summary>
     /// Classe métier Document (réunit les infomations communes à tous les documents : Livre, Revue, Dvd)
     /// </summary>
