@@ -7,6 +7,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Linq;
+using Serilog;
 
 namespace MediaTekDocuments.dal
 {
@@ -62,11 +63,17 @@ namespace MediaTekDocuments.dal
             String authenticationString;
             try
             {
+                Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Verbose()
+                    .WriteTo.Console()
+                    .WriteTo.File("logs\\log.txt")
+                    .CreateLogger();
                 authenticationString = GetAuthenticationString(connectionName);
                 api = ApiRest.GetInstance(uriApi, authenticationString);
             }
             catch (Exception e)
             {
+                Log.Fatal("Access.Access : erreur={0}", e.Message);
                 Console.WriteLine(e.Message);
                 Environment.Exit(0);
             }
@@ -507,11 +514,13 @@ namespace MediaTekDocuments.dal
                 }
                 else
                 {
+                    Log.Error("Access.TraitementRecup : code={0} message={1}", code, (String)retour["message"]);
                     Console.WriteLine("code erreur = " + code + " message = " + (String)retour["message"]);
                 }
             }
             catch (Exception e)
             {
+                Log.Fatal("Access.TraitementRecup : erreur={0}", e.Message);
                 Console.WriteLine("Erreur lors de l'accès à l'API : " + e.Message);
                 Environment.Exit(0);
             }
